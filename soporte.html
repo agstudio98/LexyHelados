@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soporte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">LexyHelados</a>
+    <ul class="nav-links">
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="index.html#sucursales">Sucursales</a></li>
+      <li><a href="catalogo.html">Catalogo</a></li>
+      <li>
+        <a href="soporte.html" class="nav-support" title="Soporte">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="chat-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="chat-sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-hexagon">L</div>
+        <div class="sidebar-name">LexyHelados</div>
+        <div class="sidebar-tagline">Soporte en linea</div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div>
+        <div class="sidebar-section-title">Consultas Frecuentes</div>
+        <button class="quick-btn" data-msg="Cuales son los horarios de las sucursales?">Horarios de sucursales</button>
+        <button class="quick-btn" data-msg="Cuales son los medios de pago que aceptan?">Medios de pago</button>
+        <button class="quick-btn" data-msg="Tienen servicio de delivery?">Delivery disponible</button>
+        <button class="quick-btn" data-msg="Tienen opciones sin TACC o veganas?">Opciones especiales</button>
+        <button class="quick-btn" data-msg="Puedo hacer un pedido por encargo o evento?">Pedidos por encargo</button>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div>
+        <div class="sidebar-section-title">Informacion</div>
+        <div class="sidebar-info">
+          <div class="info-row"><span class="info-label">Alto Alberdi</span><span>12h - 22h</span></div>
+          <div class="info-row"><span class="info-label">Av. Colon</span><span>11h - 23h</span></div>
+          <div class="info-row"><span class="info-label">Gral Paz</span><span>12h - 22:30h</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CHAT -->
+    <div class="chat-area">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <div class="chat-avatar">L</div>
+          <div>
+            <div class="chat-header-name">Asistente LexyHelados</div>
+            <div class="chat-header-status"><span class="status-dot"></span>En linea ahora</div>
+          </div>
+        </div>
+        <button class="clear-btn" id="clearBtn">Limpiar Chat</button>
+      </div>
+
+      <div class="chat-messages" id="chatMessages"></div>
+
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chatInput" placeholder="Escribi tu consulta aqui..." rows="1"></textarea>
+        <button class="send-btn" id="sendBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="chat-footer-bar">
+    <span class="footer-logo">LexyHelados</span>
+    <span class="footer-copy">Soporte al cliente — Cordoba Capital</span>
+    <span class="footer-ag">Ag Studio 2026</span>
+  </div>
+
+  <script>
+    const SYSTEM_PROMPT = `Sos el asistente virtual de LexyHelados, una heladeria artesanal y pasteleria premium fundada por Lexi Heredia en 2017 en Cordoba Capital, Argentina.
+
+La marca se concentra en 3 sucursales:
+- Alto Alberdi: abierto lunes a domingo de 12:00 a 22:00 hs
+- Avenida Colon: abierto lunes a domingo de 11:00 a 23:00 hs  
+- General Paz: abierto martes a domingo de 12:00 a 22:30 hs
+
+Productos principales: helados artesanales, postres de autor, tartas frias, mousses, crepes, milkshakes y bebidas artesanales.
+
+Medios de pago: Mastercard, Naranja X y Mercado Pago. Tambien efectivo.
+
+Hacen pedidos por encargo para eventos, cumpleanos, casamientos y reuniones corporativas. Consultar con al menos 48 hs de anticipacion.
+
+No tienen delivery propio actualmente, pero trabajan con plataformas externas en algunas zonas.
+
+Tienen opciones para personas con restricciones alimentarias: sin TACC, veganas y sin azucar, aunque varían según la temporada.
+
+Respondé siempre en español rioplatense (vos, ustedes), con tono cálido, elegante y conciso. No uses emojis. No inventes informacion que no te fue dada. Si no sabes algo, decile al usuario que se comunique directamente con la sucursal.`;
+
+    const messages = [];
+    const chatEl = document.getElementById('chatMessages');
+    const inputEl = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    function getTime() {
+      const now = new Date();
+      return now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function addMessage(role, text) {
+      const wrap = document.createElement('div');
+      wrap.className = `msg ${role}`;
+      const isBot = role === 'bot';
+      wrap.innerHTML = `
+        ${isBot ? `<div class="msg-avatar">L</div>` : ''}
+        <div>
+          <div class="msg-bubble">${text}</div>
+          <div class="msg-time">${getTime()}</div>
+        </div>
+        ${!isBot ? `<div class="msg-avatar" style="background:linear-gradient(135deg,#a8d4e6,#5fa8c8)">V</div>` : ''}
+      `;
+      chatEl.appendChild(wrap);
+      chatEl.scrollTop = chatEl.scrollHeight;
+    }
+
+    function showTyping() {
+      const el = document.createElement('div');
+      el.id = 'typingIndicator';
+      el.className = 'typing-indicator';
+      el.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
+      chatEl.appendChild(el);
+      chatEl.scrollTop = chatEl.scrollHeight;
+    }
+
+    function removeTyping() {
+      const el = document.getElementById('typingIndicator');
+      if (el) el.remove();
+    }
+
+    async function sendMessage(userText) {
+      if (!userText.trim()) return;
+      sendBtn.disabled = true;
+      inputEl.value = '';
+      inputEl.style.height = 'auto';
+
+      messages.push({ role: 'user', content: userText });
+      addMessage('user', userText);
+      showTyping();
+
+      try {
+        const res = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 1000,
+            system: SYSTEM_PROMPT,
+            messages: messages
+          })
+        });
+
+        const data = await res.json();
+        removeTyping();
+
+        const reply = data.content?.[0]?.text || 'Lo siento, no pude procesar tu consulta en este momento. Te recomiendo contactarnos directamente en alguna de nuestras sucursales.';
+        messages.push({ role: 'assistant', content: reply });
+        addMessage('bot', reply);
+
+      } catch (err) {
+        removeTyping();
+        const fallback = 'En este momento no puedo procesar tu consulta. Por favor comunicate directamente con nosotros en cualquiera de nuestras sucursales de Alto Alberdi, Av. Colon o Gral Paz.';
+        messages.push({ role: 'assistant', content: fallback });
+        addMessage('bot', fallback);
+      }
+
+      sendBtn.disabled = false;
+      inputEl.focus();
+    }
+
+    // Initial greeting
+    setTimeout(() => {
+      addMessage('bot', 'Hola, bienvenida a LexyHelados. Soy tu asistente virtual y estoy aca para ayudarte con cualquier consulta sobre nuestros productos, sucursales, horarios o pedidos especiales. En que puedo ayudarte hoy?');
+    }, 400);
+
+    // Send
+    sendBtn.addEventListener('click', () => sendMessage(inputEl.value));
+    inputEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(inputEl.value); }
+    });
+
+    // Auto resize textarea
+    inputEl.addEventListener('input', () => {
+      inputEl.style.height = 'auto';
+      inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
+    });
+
+    // Quick buttons
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+      btn.addEventListener('click', () => sendMessage(btn.dataset.msg));
+    });
+
+    // Clear
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      messages.length = 0;
+      chatEl.innerHTML = '';
+      setTimeout(() => {
+        addMessage('bot', 'Chat reiniciado. En que puedo ayudarte?');
+      }, 200);
+    });
+  </script>
+</body>
+</html>

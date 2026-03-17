@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LexyHelados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">LexyHelados</a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#sucursales">Sucursales</a></li>
+      <li><a href="catalogo.html">Catalogo</a></li>
+      <li>
+        <a href="soporte.html" class="nav-support" title="Soporte">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO — imagen de fondo: heladería artesanal -->
+  <section class="hero" id="inicio" style="position:relative;overflow:hidden;">
+    <div class="hero-bg-img" style="
+      position:absolute;inset:0;z-index:0;
+      background-image:url('https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=1600&fit=crop&q=80');
+      background-size:cover;background-position:center;
+      filter:brightness(.45) saturate(1.1);
+    "></div>
+    <div class="hero-bg-shape s1" style="z-index:1"></div>
+    <div class="hero-bg-shape s2" style="z-index:1"></div>
+    <div class="hero-bg-shape s3" style="z-index:1"></div>
+    <div class="hero-content" style="position:relative;z-index:2;">
+      <div class="hero-logo-mark"></div>
+      <h1 class="hero-brand">LexyHelados</h1>
+      <p class="hero-slogan">Dulce arte en cada copa — desde 2017</p>
+      <a href="catalogo.html" class="hero-cta">Ver Catalogo</a>
+    </div>
+    <div class="hero-scroll" style="position:relative;z-index:2;">
+      Descubrir
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="nosotros-image-wrap reveal">
+      <div class="nosotros-img-frame">
+        <div class="nosotros-img-frame-inner">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&fit=crop" alt="Lexi Heredia, Fundadora" class="nosotros-founder-img">
+        </div>
+      </div>
+      <div class="nosotros-accent-border"></div>
+    </div>
+    <div class="nosotros-text reveal">
+      <div class="section-label">Nuestra Historia</div>
+      <h2 class="section-title">Lexi Heredia</h2>
+      <div class="section-divider"></div>
+      <p class="nosotros-bio">
+        Lexi Heredia es la mente y el corazon detras de LexyHelados. Nacida en Cordoba, descubrio su pasion por los helados artesanales y los postres de alta confiteria desde muy joven, inspirandose en las tradiciones familiares y en los sabores de su ciudad natal.
+      </p>
+      <p class="nosotros-bio">
+        En 2017 convirtio ese sueno en realidad abriendo la primera sucursal en Alto Alberdi. Hoy, con una vision clara de calidad y elegancia, Lexi lidera un equipo apasionado que elabora cada producto con ingredientes seleccionados y una estetica que distingue a la marca.
+      </p>
+      <div>
+        <span class="nosotros-tag">Artesanal</span>
+        <span class="nosotros-tag">Cordobesa</span>
+        <span class="nosotros-tag">Premium</span>
+        <span class="nosotros-tag">Desde 2017</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER VISUAL — helados en produccion -->
+  <section id="banner-visual" style="
+    width:100%;height:360px;overflow:hidden;position:relative;
+    display:flex;align-items:stretch;gap:0;
+  ">
+    <div style="flex:1;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=700&fit=crop&q=80"
+           alt="Preparacion artesanal"
+           style="width:100%;height:100%;object-fit:cover;filter:brightness(.88)">
+    </div>
+    <div style="flex:1;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=700&fit=crop&q=80"
+           alt="Conos de helado artesanal"
+           style="width:100%;height:100%;object-fit:cover;filter:brightness(.88)">
+    </div>
+    <div style="flex:1;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=700&fit=crop&q=80"
+           alt="Helados artesanales coloridos"
+           style="width:100%;height:100%;object-fit:cover;filter:brightness(.88)">
+    </div>
+    <div style="
+      position:absolute;inset:0;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      background:rgba(0,0,0,.28);pointer-events:none;
+    ">
+      <p style="
+        font-family:'Great Vibes',cursive;font-size:3rem;color:#fff;
+        text-shadow:0 2px 20px rgba(0,0,0,.5);letter-spacing:.02em;
+        margin:0;
+      ">Elaborado con amor</p>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="section-label">Nuestra Trayectoria</div>
+    <h2 class="section-title">Linea de Marca</h2>
+    <div class="section-divider"></div>
+    <div class="timeline-track">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-year">2017</div>
+          <div class="timeline-card-title">Los Origenes</div>
+          <p class="timeline-card-text">Lexi Heredia funda LexyHelados en el barrio de Alto Alberdi. Una heladeria artesanal con identidad propia, pensada para el paladar cordobes.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-year">2018</div>
+          <div class="timeline-card-title">Primera Expansion</div>
+          <p class="timeline-card-text">Apertura de la segunda sucursal sobre Avenida Colon. La marca comienza a consolidarse como referente de postres gourmet en Cordoba Capital.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-card-title">Reinvencion</div>
+          <p class="timeline-card-text">Ante los desafios del contexto, LexyHelados lanza su linea de postres para llevar y delivery, acercando el sabor a cada hogar cordobes.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-card-title">Zona Gral Paz</div>
+          <p class="timeline-card-text">Inauguracion de la sucursal sobre Gral Paz, completando el triangulo de presencia en los barrios mas activos de la ciudad.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-card-title">Nueva Identidad</div>
+          <p class="timeline-card-text">Rediseno de marca y lanzamiento de la nueva plataforma digital. LexyHelados consolida su imagen chic y distinguida para los proximos anos.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUCURSALES -->
+  <section id="sucursales">
+    <div class="reveal">
+      <div class="section-label">Donde Encontrarnos</div>
+      <h2 class="section-title">Nuestras Sucursales</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="sucursales-grid">
+      <div class="sucursal-card reveal">
+        <div class="sucursal-number">01</div>
+        <div class="sucursal-zona">Alto Alberdi</div>
+        <div class="sucursal-address">La sucursal original. Donde nacio el sueno de Lexi en 2017.</div>
+        <div class="sucursal-hours">Lun — Dom / 12:00 hs a 22:00 hs</div>
+      </div>
+      <div class="sucursal-card reveal">
+        <div class="sucursal-number">02</div>
+        <div class="sucursal-zona">Av. Colon</div>
+        <div class="sucursal-address">En el corazon de una de las avenidas mas emblematicas de Cordoba.</div>
+        <div class="sucursal-hours">Lun — Dom / 11:00 hs a 23:00 hs</div>
+      </div>
+      <div class="sucursal-card reveal">
+        <div class="sucursal-number">03</div>
+        <div class="sucursal-zona">Gral Paz</div>
+        <div class="sucursal-address">Nuestra sucursal mas reciente, en el dinamico barrio de Gral Paz.</div>
+        <div class="sucursal-hours">Mar — Dom / 12:00 hs a 22:30 hs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOGO DESTACADO — con imágenes reales -->
+  <section id="catalogo-destacado">
+    <div class="reveal">
+      <div class="section-label">Lo Mas Pedido</div>
+      <h2 class="section-title">Catalogo Destacado</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal">
+        <div class="cat-card-img"><span class="cat-card-emoji">🍦</span></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Copa Rosada</div>
+          <div class="cat-card-desc">Helado de frutilla y frambuesa con crema chantilly y virutas de chocolate blanco.</div>
+          <div class="cat-card-price">$ 2.800</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-card-img"><span class="cat-card-emoji">🧁</span></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Parfait Celeste</div>
+          <div class="cat-card-desc">Capas de helado de vainilla, merengue italiano y frutos del bosque.</div>
+          <div class="cat-card-price">$ 3.200</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-card-img"><span class="cat-card-emoji">🍮</span></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Panna Cotta Lila</div>
+          <div class="cat-card-desc">Panna cotta artesanal con coulis de lavanda y mora. Elegancia en cada cucharada.</div>
+          <div class="cat-card-price">$ 2.500</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-card-img"><span class="cat-card-emoji">🍰</span></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Tarta Violeta</div>
+          <div class="cat-card-desc">Tarta fria de moras y mascarpone, base de galletitas y glasee violeta.</div>
+          <div class="cat-card-price">$ 3.800</div>
+        </div>
+      </div>
+    </div>
+    <a href="catalogo.html" class="cat-ver-mas reveal">Ver Catalogo Completo</a>
+  </section>
+
+  <!-- MEDIOS DE PAGO -->
+  <section id="pagos">
+    <div class="reveal">
+      <div class="section-label">Comodidad para Vos</div>
+      <h2 class="section-title">Medios de Pago</h2>
+      <div class="section-divider"></div>
+      <p>Aceptamos los medios de pago mas utilizados para que tu experiencia sea perfecta.</p>
+    </div>
+    <div class="pagos-grid">
+      <div class="pago-card reveal">
+        <div class="pago-logo">
+          <svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+            <circle class="mc-circle-l" cx="28" cy="25" r="18"/>
+            <circle class="mc-circle-r" cx="52" cy="25" r="18"/>
+            <path class="mc-overlap" d="M40 11.3a18 18 0 0 1 0 27.4A18 18 0 0 1 40 11.3z"/>
+          </svg>
+        </div>
+        <div class="pago-name">Mastercard</div>
+      </div>
+      <div class="pago-card reveal">
+        <div class="pago-logo">
+          <svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="72" height="34" rx="4" fill="#ff6600"/>
+            <text x="40" y="30" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="11" fill="white">Naranja X</text>
+          </svg>
+        </div>
+        <div class="pago-name">Naranja X</div>
+      </div>
+      <div class="pago-card reveal">
+        <div class="pago-logo">
+          <svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="72" height="34" rx="4" fill="#00b1ea"/>
+            <circle cx="40" cy="25" r="10" fill="white" opacity=".25"/>
+            <text x="40" y="29" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="8" fill="white">Mercado</text>
+            <text x="40" y="39" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="8" fill="white">Pago</text>
+          </svg>
+        </div>
+        <div class="pago-name">Mercado Pago</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA CAROUSEL — imágenes reales de helados y postres -->
+  <section id="galeria">
+    <div class="inner reveal">
+      <div class="section-label">Momentos Dulces</div>
+      <h2 class="section-title">Galeria</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide" style="min-width:380px;height:300px;border-radius:12px;overflow:hidden;margin-right:24px;flex-shrink:0;">
+          <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&fit=crop&q=80" alt="Conos artesanales" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="carousel-slide" style="min-width:380px;height:300px;border-radius:12px;overflow:hidden;margin-right:24px;flex-shrink:0;">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&fit=crop&q=80" alt="Tarta premium" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="carousel-slide" style="min-width:380px;height:300px;border-radius:12px;overflow:hidden;margin-right:24px;flex-shrink:0;">
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&fit=crop&q=80" alt="Elaboracion artesanal" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="carousel-slide" style="min-width:380px;height:300px;border-radius:12px;overflow:hidden;margin-right:24px;flex-shrink:0;">
+          <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&fit=crop&q=80" alt="Helados coloridos" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">LexyHelados</div>
+        <p class="footer-brand-text">Arte, sabor y distincion en cada producto. Una marca cordobesa con alma propia desde 2017.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navegacion</div>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#sucursales">Sucursales</a></li>
+          <li><a href="catalogo.html">Catalogo</a></li>
+          <li><a href="soporte.html">Soporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Sucursales</div>
+        <address>
+          Alto Alberdi<br/>
+          Av. Colon<br/>
+          Gral Paz<br/>
+          Cordoba Capital
+        </address>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contacto</div>
+        <ul>
+          <li><a href="soporte.html">Soporte en linea</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">LexyHelados &copy; 2026 — Todos los derechos reservados</span>
+      <span class="footer-ag">Ag Studio 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+
+  </script>
+</body>
+</html>
