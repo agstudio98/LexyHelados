@@ -23,9 +23,15 @@
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
+          <span>Soporte</span>
         </a>
       </li>
     </ul>
+    <button class="nav-toggle" aria-label="Abrir menú" id="navToggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </nav>
 
   <!-- HERO — imagen de fondo: heladería artesanal -->
@@ -355,6 +361,41 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
+
+    // Responsive Navbar Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        navLinks.classList.toggle('open');
+        nav.classList.toggle('menu-open');
+        document.body.classList.toggle('no-scroll');
+      });
+    }
+
+    // Close menu when clicking backdrop overlay
+    nav.addEventListener('click', (e) => {
+      if (nav.classList.contains('menu-open') && e.clientY > nav.offsetHeight) {
+        closeMenu();
+      }
+    });
+
+    // Close menu when clicking a link
+    const menuLinks = navLinks.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    function closeMenu() {
+      if (navToggle) navToggle.classList.remove('open');
+      if (navLinks) navLinks.classList.remove('open');
+      if (nav) nav.classList.remove('menu-open');
+      document.body.classList.remove('no-scroll');
+    }
 
     // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');

@@ -83,6 +83,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(224,122,154,.15); }
   transition: background .3s, border-color .3s;
   text-decoration: none;
 }
+.nav-support span { display: none; }
 .nav-support:hover { background: var(--rose-light); border-color: var(--rose-deep); }
 .nav-support svg { width: 16px; height: 16px; stroke: var(--muted); }
 .nav-support:hover svg { stroke: var(--rose-deep); }
@@ -1170,6 +1171,52 @@ footer {
   transform: translateY(0);
 }
 
+/* Hamburger Button & Overlay Base */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+  padding: 0;
+}
+.nav-toggle .bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--rose-deep);
+  border-radius: 2px;
+  transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity .3s ease, 
+              background-color .3s ease;
+}
+
+/* Nav backdrop overlay */
+nav::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 36, 40, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 104;
+}
+nav.menu-open::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Scroll block on body */
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width: 1100px) { 
   .products-grid { grid-template-columns: repeat(3,1fr); } 
@@ -1192,6 +1239,106 @@ footer {
   .chat-input-area, .chat-header { padding: 16px 20px; }
   .chat-messages { padding: 20px; }
   .chat-footer-bar { padding: 12px 20px; }
+
+  /* Mobile menu toggle */
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-toggle.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .nav-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Drawer layout for mobile nav links */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 290px;
+    height: 100vh;
+    background: rgba(253, 248, 244, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: -10px 0 30px rgba(224, 122, 154, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 40px 40px 40px;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 105;
+  }
+  .nav-links.open {
+    right: 0;
+  }
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-links.open li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .nav-links.open li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.open li:nth-child(2) { transition-delay: 0.18s; }
+  .nav-links.open li:nth-child(3) { transition-delay: 0.26s; }
+  .nav-links.open li:nth-child(4) { transition-delay: 0.34s; }
+
+  .nav-links a {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    padding: 8px 0;
+    display: inline-block;
+    letter-spacing: 0.1em;
+  }
+  .nav-links a::after {
+    bottom: 2px;
+  }
+  
+  /* Support link in drawer */
+  .nav-links .nav-support {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    background: transparent;
+    width: auto;
+    height: auto;
+    color: var(--charcoal);
+  }
+  .nav-links .nav-support span {
+    display: inline;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    font-weight: 500;
+    transition: color .3s;
+  }
+  .nav-links .nav-support:hover span {
+    color: var(--rose-deep);
+  }
+  .nav-links .nav-support svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--charcoal);
+    transition: stroke .3s;
+  }
+  .nav-links .nav-support:hover svg {
+    stroke: var(--rose-deep);
+  }
 }
 @media(max-width: 768px) {
   .sucursales-grid { grid-template-columns: 1fr; }
